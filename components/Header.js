@@ -158,7 +158,7 @@ class Header extends React.Component {
       return (
         <Block center>
           {search ? this.renderSearch() : null}
-          {options ? this.renderOptions() : null}
+          {/* {options ? this.renderOptions() : null} */}
           {tabs ? this.renderTabs() : null}
         </Block>
       );
@@ -185,7 +185,7 @@ class Header extends React.Component {
           title={title}
           style={navbarStyles}
           transparent={transparent}
-          right={this.renderRight()}
+          // right={this.renderRight()}
           rightStyle={{ alignItems: 'center' }}
           left={
             <Icon 

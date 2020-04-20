@@ -1,10 +1,15 @@
 import React from 'react';
-import { StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, View, Image, Text, ImageBackground } from 'react-native';
 import { Block, theme } from 'galio-framework';
 
 import { Card } from '../components';
 import articles from '../constants/articles';
 const { width } = Dimensions.get('screen');
+
+
+const pen = require('../assets/icons/pen.png')
+const ellipse = require('../assets/icons/Ellipse.png')
+const bg = require('../assets/icons/menuItem.png')
 
 class Home extends React.Component {
   renderArticles = () => {
@@ -12,15 +17,86 @@ class Home extends React.Component {
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.articles}>
-        <Block flex>
-          <Card item={articles[0]} horizontal  />
-          <Block flex row>
-            <Card item={articles[1]} style={{ marginRight: theme.SIZES.BASE }} />
-            <Card item={articles[2]} />
-          </Block>
-          <Card item={articles[3]} horizontal />
-          <Card item={articles[4]} full />
-        </Block>
+        <View style={styles.menu}>
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+
+          <ImageBackground source={bg} style={styles.menuItem}>
+            <ImageBackground source={ellipse} style={styles.menuItemImageWrapper}>
+              <Image style={styles.menuItemImage} source={pen} />
+            </ImageBackground>
+            <View style={styles.menuItemTextWrapper}>
+              <Text style={styles.menuItemText}>Алифбо</Text>
+            </View>
+          </ImageBackground>
+
+
+        </View>
       </ScrollView>
     )
   }
@@ -36,11 +112,50 @@ class Home extends React.Component {
 
 const styles = StyleSheet.create({
   home: {
-    width: width,    
+    width: width,
+    backgroundColor: "#E0E0E0"
   },
   articles: {
     width: width - theme.SIZES.BASE * 2,
     paddingVertical: theme.SIZES.BASE,
+  },
+  menu: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexWrap: 'wrap'
+  },
+  menuItem: {
+    flexBasis: "30%",
+    padding: 3,
+    paddingVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // backgroundColor: '#fff',
+    marginHorizontal: 1,
+    marginVertical: 5
+  },
+  menuItemImageWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 63,
+    width: 63
+  },
+  menuItemImage: {
+
+  },
+  menuItemTextWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#2D9CDB',
+    color: '#fff',
+    paddingHorizontal: 25,
+    paddingVertical: 12,
+    borderRadius: 10
+  },
+  menuItemText: {
+    color: '#fff',
   },
 });
 
