@@ -1,6 +1,6 @@
 import React from 'react';
 import { withNavigation } from '@react-navigation/compat';
-import { TouchableOpacity, StyleSheet, Platform, Dimensions } from 'react-native';
+import { TouchableOpacity, StyleSheet, Platform, Dimensions, Image } from 'react-native';
 import { Button, Block, NavBar, Text, theme } from 'galio-framework';
 
 import Icon from './Icon';
@@ -11,7 +11,7 @@ import argonTheme from '../constants/Theme';
 const { height, width } = Dimensions.get('window');
 const iPhoneX = () => Platform.OS === 'ios' && (height === 812 || width === 812 || height === 896 || width === 896);
 
-const BellButton = ({isWhite, style, navigation}) => (
+const BellButton = ({ isWhite, style, navigation }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
     <Icon
       family="ArgonExtra"
@@ -23,7 +23,7 @@ const BellButton = ({isWhite, style, navigation}) => (
   </TouchableOpacity>
 );
 
-const BasketButton = ({isWhite, style, navigation}) => (
+const BasketButton = ({ isWhite, style, navigation }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
     <Icon
       family="ArgonExtra"
@@ -34,13 +34,14 @@ const BasketButton = ({isWhite, style, navigation}) => (
   </TouchableOpacity>
 );
 
-const SearchButton = ({isWhite, style, navigation}) => (
+const SearchButton = ({ isWhite, style, navigation }) => (
   <TouchableOpacity style={[styles.button, style]} onPress={() => navigation.navigate('Pro')}>
     <Icon
       size={16}
       family="Galio"
       name="search-zoom-in"
       color={theme.COLORS[isWhite ? 'WHITE' : 'ICON']}
+      color={'#2D9CDB'}
     />
   </TouchableOpacity>
 );
@@ -112,10 +113,13 @@ class Header extends React.Component {
         right
         color="black"
         style={styles.search}
-        placeholder="What are you looking for?"
+        placeholder="Qalbingizni tinglang ..."
         placeholderTextColor={'#8898AA'}
         onFocus={() => navigation.navigate('Pro')}
-        iconContent={<Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />}
+        iconContent={
+          // <Icon size={16} color={theme.COLORS.MUTED} name="search-zoom-in" family="ArgonExtra" />
+          <Image source={require('../assets/icons/search.png')} style={{width:25, height:25}}></Image>
+        }
       />
     );
   }
@@ -132,7 +136,7 @@ class Header extends React.Component {
         </Button>
         <Button shadowless style={styles.tab} onPress={() => navigation.navigate('Pro')}>
           <Block row middle>
-            <Icon size={16} name="bag-17" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON}/>
+            <Icon size={16} name="bag-17" family="ArgonExtra" style={{ paddingRight: 8 }} color={argonTheme.COLORS.ICON} />
             <Text size={16} style={styles.tabTitle}>{optionRight || 'Fashion'}</Text>
           </Block>
         </Button>
@@ -142,7 +146,7 @@ class Header extends React.Component {
   renderTabs = () => {
     const { tabs, tabIndex, navigation } = this.props;
     const defaultTab = tabs && tabs[0] && tabs[0].id;
-    
+
     if (!tabs) return null;
 
     return (
@@ -159,7 +163,7 @@ class Header extends React.Component {
         <Block center>
           {search ? this.renderSearch() : null}
           {/* {options ? this.renderOptions() : null} */}
-          {tabs ? this.renderTabs() : null}
+          {/* {tabs ? this.renderTabs() : null} */}
         </Block>
       );
     }
@@ -169,13 +173,26 @@ class Header extends React.Component {
 
     const noShadow = ['Search', 'Categories', 'Deals', 'Pro', 'Profile'].includes(title);
     const headerStyles = [
-      !noShadow ? styles.shadow : null,
+      // !noShadow ? styles.shadow : null,
       transparent ? { backgroundColor: 'rgba(0,0,0,0)' } : null,
+      { backgroundColor: '#E0E0E0' },
     ];
 
     const navbarStyles = [
       styles.navbar,
-      bgColor && { backgroundColor: bgColor }
+      bgColor && { backgroundColor: bgColor },
+      { backgroundColor: '#2D9CDB' },
+      {
+        borderRadius: 5,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.32,
+        shadowRadius: 5.46,
+        elevation: 9,
+      }
     ];
 
     return (
@@ -188,19 +205,21 @@ class Header extends React.Component {
           // right={this.renderRight()}
           rightStyle={{ alignItems: 'center' }}
           left={
-            <Icon 
-              name={back ? 'chevron-left' : "menu"} family="entypo" 
-              size={20} onPress={this.handleLeftPress} 
+            <Icon
+              name={back ? 'chevron-left' : "menu"} family="entypo"
+              size={20} onPress={this.handleLeftPress}
               color={iconColor || (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)}
+              color={argonTheme.COLORS.WHITE}
               style={{ marginTop: 2 }}
             />
-              
+
           }
           leftStyle={{ paddingVertical: 12, flex: 0.2 }}
           titleStyle={[
             styles.title,
             { color: argonTheme.COLORS[white ? 'WHITE' : 'HEADER'] },
-            titleColor && { color: titleColor }
+            titleColor && { color: titleColor },
+            { color: '#fff' }
           ]}
           {...props}
         />
@@ -254,9 +273,19 @@ const styles = StyleSheet.create({
     height: 48,
     width: width - 32,
     marginHorizontal: 16,
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 3,
-    borderColor: argonTheme.COLORS.BORDER
+    borderColor: argonTheme.COLORS.BORDER,
+    borderWidth: 0,
+    borderRadius: 5,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.32,
+    shadowRadius: 5.46,
+    elevation: 9,
   },
   options: {
     marginBottom: 24,

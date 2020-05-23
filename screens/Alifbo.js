@@ -2,8 +2,6 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet, Dimensions, ScrollView, View, Image, Text, ImageBackground } from 'react-native';
 import { Block, theme } from 'galio-framework';
 
-import { withNavigation } from '@react-navigation/compat';
-
 import { Card } from '../components';
 import articles from '../constants/articles';
 const { width } = Dimensions.get('screen');
@@ -15,65 +13,46 @@ const notification = require('../assets/icons/notification.png')
 const school = require('../assets/icons/school.png')
 const ellipse = require('../assets/icons/Ellipse.png')
 const bg = require('../assets/icons/menuItem.png')
-const kalima = require('../assets/icons/kalima.png')
 
 const data = [
-  {
-    title: "Алифбо",
-    image: pen,
-    url: "Alifbo"
-  },
-  {
-    title: "Асосий тушунчалар",
-    image: text_fields,
-    url: "MainThings"
-  },
-  {
-    title: "Ҳарфларни ўрганиш",
-    image: notification
-  },
-  {
-    title: "Тажвид қоидалар",
-    image: school
-  },
-  {
-    title: "Иймон калималари",
-    image: kalima
-  },
-
-  {
-    title: "Қисқа\nсуралар",
-    image: pen
-  },
-  {
-    title: "Энг муҳим дуолар",
-    image: pen
-  },
-  {
-    title: "Намоздаги лафзлар",
-    image: pen
-  },
-  {
-    title: "Иймон калималари",
-    image: pen
-  }
+    {title:"ج", mp3:""},
+    {title:"ث", mp3:""},
+    {title:"ت", mp3:""},
+    {title:"ب", mp3:""},
+    {title:"ا", mp3:""},
+    {title:"ر", mp3:""},
+    {title:"ذ", mp3:""},
+    {title:"د", mp3:""},
+    {title:"خ", mp3:""},
+    {title:"ح", mp3:""},
+    {title:"ض", mp3:""},
+    {title:"ص", mp3:""},
+    {title:"ش", mp3:""},
+    {title:"س", mp3:""},
+    {title:"ز", mp3:""},
+    {title:"ف", mp3:""},
+    {title:"غ", mp3:""},
+    {title:"ع", mp3:""},
+    {title:"ظ", mp3:""},
+    {title:"ط", mp3:""},
+    {title:"ن", mp3:""},
+    {title:"م", mp3:""},
+    {title:"ل", mp3:""},
+    {title:"ك", mp3:""},
+    {title:"ق", mp3:""},
+    {title:"ي", mp3:""},
+    {title:"و", mp3:""},
+    {title:"ه", mp3:""},
 ]
 
-class Home extends React.Component {
-  renderArticles = () => {
-
+class Alifbo extends React.Component {
+  renderAlifbo = () => {
     const { navigation} = this.props;
-    var itemsC = 9;
-
+    
     var items = [];
-
     data.map((item, index) => {
-
       items.push(
-          <TouchableOpacity key={index} onPress={() => navigation.navigate(item.url)} style={styles.menuItem}>
-            <View style={styles.menuItemImageWrapper}>
-              <Image style={styles.menuItemImage} source={item.image} />
-            </View>
+          <TouchableOpacity onPress={() => navigation.navigate("Alifbo")} style={styles.menuItem}>            
             <Text style={styles.menuItemText}>{item.title}</Text>
           </TouchableOpacity>
       )
@@ -92,7 +71,7 @@ class Home extends React.Component {
   render() {
     return (
       <Block flex center style={styles.home}>
-        {this.renderArticles()}
+        {this.renderAlifbo()} 
       </Block>
     );
   }
@@ -105,9 +84,9 @@ const styles = StyleSheet.create({
   },
   articles: {
     // width: width - theme.SIZES.BASE * 2,
-    paddingVertical: theme.SIZES.BASE,
-    paddingHorizontal: 7,
-    paddingTop: 0
+    paddingVertical: theme.SIZES.BASE * 2,
+    paddingHorizontal: 0,
+    height: "100%",
   },
   menu: {
     flex: 1,
@@ -117,16 +96,14 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   menuItem: {
-    flexBasis: "30%",
-    height: 135,
-    padding: 3,
-    paddingVertical: 8,
+    flexBasis: "15%",
     alignItems: 'center',
-    justifyContent: 'space-between',
     backgroundColor: '#fff',
     marginHorizontal: 6,
     marginVertical: 6,
+    borderColor: "#2D9CDB",
     borderRadius: 5,
+    borderBottomWidth: 7,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -138,7 +115,6 @@ const styles = StyleSheet.create({
   },
   menuItemImageWrapper: {
     alignItems: 'center',
-    // padding: 15,
     justifyContent: 'center',
     height: 63,
     width: 63,
@@ -151,7 +127,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.32,
     shadowRadius: 5.46,
-    elevation: 5,
+    elevation: 9,
   },
   menuItemImage: {
     height: 36,
@@ -160,12 +136,13 @@ const styles = StyleSheet.create({
 
   },
   menuItemText: {
-    fontSize: 16,
+    fontSize: 50,
     textAlign: 'center',
+    lineHeight: 80,
     color: '#4F4F4F',
-    paddingTop: 10,
-    paddingBottom: 10
+    // paddingVertical: 2,
+
   },
 });
 
-export default Home
+export default Alifbo;

@@ -9,6 +9,9 @@ import { Block } from "galio-framework";
 
 // screens
 import Home from "../screens/Home";
+import Alifbo from "../screens/Alifbo";
+import MainThings from "../screens/MainThings";
+import Dars from "../screens/Dars";
 import Onboarding from "../screens/Onboarding";
 import Pro from "../screens/Pro";
 import Profile from "../screens/Profile";
@@ -58,6 +61,57 @@ function ElementsStack(props) {
           headerTransparent: true
         }}
       />
+    </Stack.Navigator>
+  );
+}
+
+function AlifboStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="Alifbo"
+        component={Alifbo}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header title="Alifbo" navigation={navigation} scene={scene} />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />      
+    </Stack.Navigator>
+  );
+}
+
+function MainThingsStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="MainThings"
+        component={MainThings}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header title="Асосий тушунчалар" navigation={navigation} scene={scene} />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />      
+    </Stack.Navigator>
+  );
+}
+
+function DarsStack(props) {
+  return (
+    <Stack.Navigator mode="card" headerMode="screen">
+      <Stack.Screen
+        name="Dars"
+        component={Dars}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header title="Dars" navigation={navigation} scene={scene} />
+          ),
+          cardStyle: { backgroundColor: "#F8F9FE" }
+        }}
+      />      
     </Stack.Navigator>
   );
 }
@@ -146,7 +200,7 @@ function HomeStack(props) {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Home"
+              title="Қуръон тартили"
               search
               options
               navigation={navigation}
@@ -213,7 +267,7 @@ function AppStack(props) {
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
-          overflow: "hidden"
+          overflow: "hidden",
         },
         labelStyle: {
           fontSize: 18,
@@ -228,6 +282,9 @@ function AppStack(props) {
       <Drawer.Screen name="Account" component={Register} />
       <Drawer.Screen name="Elements" component={ElementsStack} />
       <Drawer.Screen name="Articles" component={ArticlesStack} />
+      <Drawer.Screen name="Alifbo" component={AlifboStack} />
+      <Drawer.Screen name="MainThings" component={MainThingsStack} />
+      <Drawer.Screen name="Dars" component={DarsStack} />
     </Drawer.Navigator>
   );
 }
